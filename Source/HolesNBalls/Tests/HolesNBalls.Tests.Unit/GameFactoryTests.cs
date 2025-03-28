@@ -54,7 +54,17 @@ public class GameFactoryTests
 
         Assert.Throws<ArgumentException>(() => factory.CreateBoardPlane(2, 2, holes));
     }
-    
+
+    [Fact]
+    public void BoardPlane_WithUniqueHoleNumbers_CanBeCreated()
+    {
+        GameFactory factory = new GameFactory(new GameRules(AllowSameHoleNumbers: false));
+
+        List<Hole> holes = [new(0, 0, 0), new(1, 1, 1)]; // The last one has the same number as the first one
+
+        Assert.NotNull(factory.CreateBoardPlane(2, 2, holes));
+    }
+
     [Fact]
     public void BoardPlane_WithSameHoleNumbersIfAllowedByRules_CanBeCreated()
     {
