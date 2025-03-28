@@ -60,7 +60,7 @@ public class GameFactoryTests
     {
         GameFactory factory = new GameFactory(new GameRules(AllowSameHoleNumbers: false));
 
-        List<Hole> holes = [new(0, 0, 0), new(1, 1, 1)]; // The last one has the same number as the first one
+        List<Hole> holes = [new(0, 0, 0), new(1, 1, 1)];
 
         Assert.NotNull(factory.CreateBoardPlane(2, 2, holes));
     }
